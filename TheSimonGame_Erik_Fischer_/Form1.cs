@@ -43,7 +43,7 @@ namespace TheSimonGame_Erik_Fischer_
             {
                 level++;
             }
-            panellightup();
+            panel1.Invalidate();
             
         }
 
@@ -98,9 +98,31 @@ namespace TheSimonGame_Erik_Fischer_
                 g.FillRectangle(p, 300, 200, 95, 95);
                 g.FillRectangle(p, 300, 300, 95, 95);
             }
-            
+            if (level == 0)
+            {
+                rnd_simonsq.Next(1, 4);
 
+            }
+            for (int i = 0; i < SR + 1; i++)
+            {
+                if (level == 0)
+                {
+                    
+                }
+                else if (level == 1)
+                {
+
+                }
+                else
+                {
+
+                }
+
+
+            }
         }
+
+    }
 
         private void lvl2()
         {
@@ -112,25 +134,6 @@ namespace TheSimonGame_Erik_Fischer_
             panel1.Invalidate();
         }
         
-        private void panellightup()
-        {
-            for (int i = 0; i < SR + 1 ; i++)
-            {
-                if (level == 0)
-                {
-
-                }
-                else if (level == 1)
-                {
-
-                }
-                else
-                {
-
-                }
-
-                
-            }
-        }
+        
     }
 }
