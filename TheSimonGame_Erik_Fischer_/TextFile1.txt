@@ -1,10 +1,11 @@
 2022-04-05: Uppstart och koppling till Github
 Dag1:
+Projektplanering:
 -	Det finns från början 4 plattor som kommer i lvl 1 bara en platta lysa en gång och i level 4 kommer man behöva slå in samma mönster som det lös in.
 -	Efter ett antal lvl så kommer spelbrädan att växa och bli större
 -	Det kommer finnas en poängräknare och highscore i menyn (för just den sessionen)
--	Storlek 2*2, 3*3, ksk 4*4, 5*5
+-	Storlek 2*2, 3*3, ksk 4*4, 5*5 (en ruta 95*95 pixlar)
 -	Vilken ruta som kommer att lysa avgörs av en Random från en lista som förstoras varje steg/runda
 -	Restart, kommer även spela ett ljud när det blinkar och när man trycker
-hjhj
+
 
