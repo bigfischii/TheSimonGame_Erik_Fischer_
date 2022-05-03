@@ -7,5 +7,7 @@ Projektplanering:
 -	Storlek 2*2, 3*3, ksk 4*4, 5*5 (en ruta 95*95 pixlar)
 -	Vilken ruta som kommer att lysa avgörs av en Random från en lista som förstoras varje steg/runda
 -	Restart, kommer även spela ett ljud när det blinkar och när man trycker
-
+Dag2:
+påbörja kodning där rutor för alla levlar är fixade och påbörjat med blinkningen men ej med själva imiteringen (inmatning av användare)
+SRO håller koll på vilken runda och gör så att rutor endast blinkar en gång runda 1 osv.
 

@@ -13,19 +13,26 @@ namespace TheSimonGame_Erik_Fischer_
     public partial class Form1 : Form
     {
         //Author: Erik Fischer
-        int level = 0;
-        int HS = 0; //Highscore
+        int level = 1;
+        int HS = 0; //Highscore taht session
+        int SRO = 0; //Number of blinks per round
+        int AR = 0; //random value (per level)
         int SR = 0; //Score that game
-        int AR = 0;
+        int background = 1;
         List<int> musx = new List<int>();
         List<int> musy = new List<int>();
+        bool active = false;
+        
         Random rnd_simonsq = new Random();
 
         public Form1()
         {
+            
             InitializeComponent();
-            panel1.Invalidate();
+            Run.Enabled = true;
             label2.Text = HS.ToString();
+            panel1.Invalidate();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -35,25 +42,15 @@ namespace TheSimonGame_Erik_Fischer_
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //Random square lightup (lvl1 s1 = 1; lvl1 s1 = 2....)
-            if (SR == 12) //score taht game = 12 extend to 3*3
-            {
-                level++;
-            }
-            if (SR == 24) // score that game = 24 extend to 4*4
-            {
-                level++;
-            }
-            panel1.Invalidate();
-
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             SolidBrush p = new SolidBrush(Color.Black);
-            SolidBrush pg = new SolidBrush(Color.Gray);
-            if (level == 0)
+            SolidBrush pg = new SolidBrush(Color.Purple);
+            if (background == 1)
             {
                 //row 1 column 1;2
                 g.FillRectangle(p, 0, 0, 95, 95);
@@ -61,8 +58,9 @@ namespace TheSimonGame_Erik_Fischer_
                 //row 2 column 1;2
                 g.FillRectangle(p, 100, 0, 95, 95);
                 g.FillRectangle(p, 100, 100, 95, 95);
+                
             }
-            if (level == 1)
+            if (background == 2)
             {
                 //row 1 column 1;3
                 g.FillRectangle(p, 0, 0, 95, 95);
@@ -77,7 +75,7 @@ namespace TheSimonGame_Erik_Fischer_
                 g.FillRectangle(p, 200, 100, 95, 95);
                 g.FillRectangle(p, 200, 200, 95, 95);
             }
-            if (level == 2)
+            if (background == 3)
             {
                 //row 1 column 1;4
                 g.FillRectangle(p, 0, 0, 95, 95);
@@ -101,51 +99,108 @@ namespace TheSimonGame_Erik_Fischer_
                 g.FillRectangle(p, 300, 300, 95, 95);
             }
 
-            if (level == 0)
+            if (SR == 7) //score that game = 12 extend to 3*3
             {
-                AR = rnd_simonsq.Next(1, 4);
-                switch (AR)
-                { 
-                case 1:
-                        g.FillRectangle(pg, 0, 0, 95, 95);
-                        SR++;
-                        panel1.Invalidate();
-
-                        break;
-                case 2: 
-                        g.FillRectangle(pg, 100, 0, 95, 95);
-                        SR++;
-                        panel1.Invalidate();
-                        break;
-                case 3:
-                        g.FillRectangle(pg, 0, 100, 95, 95);
-                        SR++;
-                        panel1.Invalidate();
-                        break;
-                case 4:
-                        g.FillRectangle(pg, 100, 100, 95, 95);
-                        SR++;
-                        panel1.Invalidate();
-                        break;
-                }
+                level++;
             }
-            for (int i = 0; i < SR + 1; i++)
+            if (SR == 14) // score that game = 24 extend to 4*4
             {
-                if (level == 0)
-                {
-
-                }
-                else if (level == 1)
-                {
-
-                }
-                else
-                {
-
-                }
-
-
+                level++;
             }
+            
+            
+
+
+                for (int i = 0; i < SRO + 1; i++)
+                {
+
+                    if (level == 1)
+                    {
+                        AR = rnd_simonsq.Next(1, 4);
+                        switch (AR)
+                        {
+                            case 1:
+                                g.FillRectangle(pg, 0, 0, 95, 95);
+                                Task.Delay(1000);
+                                background = 1;
+
+                                break;
+                            case 2:
+                                g.FillRectangle(pg, 100, 0, 95, 95);
+                                Task.Delay(1000);
+                                background = 1;
+
+                                break;
+                            case 3:
+                                g.FillRectangle(pg, 0, 100, 95, 95);
+                                Task.Delay(1000);
+                                background = 1;
+
+                                break;
+                            case 4:
+                                g.FillRectangle(pg, 100, 100, 95, 95);
+                                Task.Delay(1000);
+                                background = 1;
+                                break;
+
+
+                        }
+
+                    }
+
+                    /*else if (level == 2)
+                    {
+                        switch (AR)
+                        {
+                            case 1:
+                                g.FillRectangle(pg, 0, 0, 95, 95);
+                                panel1.Invalidate();
+                                break;
+                            case 2:
+                                g.FillRectangle(p, 100, 0, 95, 95);
+                                panel1.Invalidate();
+                                break;
+                            case 3:
+                                g.FillRectangle(p, 200, 0, 95, 95);
+                                panel1.Invalidate();
+                                break;
+                            case 4:
+                                g.FillRectangle(p, 0, 100, 95, 95);
+                                panel1.Invalidate();
+                                break;
+                            case 5:
+                                g.FillRectangle(p, 100, 100, 95, 95);
+                                panel1.Invalidate();
+                                break;
+                            case 6:
+                                g.FillRectangle(p, 200, 100, 95, 95);
+                                panel1.Invalidate();
+                                break;
+                            case 7:
+                                g.FillRectangle(p, 0, 200, 95, 95);
+                                panel1.Invalidate();
+                                break;
+                            case 8:
+                                g.FillRectangle(p, 100, 200, 95, 95);
+                                panel1.Invalidate();
+                                break;
+                            case 9:
+                                g.FillRectangle(p, 200, 200, 95, 95);
+                                panel1.Invalidate();
+                                break;
+                        }
+
+                    }
+                    else
+                    {
+
+                    }
+                    */
+
+                }
+
+                //SRO++; lägg till efter klick kod är gjord
+            
         }
 
 
@@ -155,15 +210,13 @@ namespace TheSimonGame_Erik_Fischer_
 
         }
 
-        private void PanelClaear()
-        {
-            panel1.Invalidate();
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
             Run.Enabled = true;
-
+            active = true;
+            panel1.Invalidate();
         }
     }   
         
