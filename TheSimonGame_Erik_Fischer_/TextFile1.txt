@@ -9,5 +9,5 @@ Projektplanering:
 -	Restart, kommer även spela ett ljud när det blinkar och när man trycker
 Dag2:
 påbörja kodning där rutor för alla levlar är fixade och påbörjat med blinkningen men ej med själva imiteringen (inmatning av användare)
-SRO håller koll på vilken runda och gör så att rutor endast blinkar en gång runda 1 osv.
+SRO håller koll på vilken runda och gör så att rutor endast blinkar en gång runda 1 osv. 
 
