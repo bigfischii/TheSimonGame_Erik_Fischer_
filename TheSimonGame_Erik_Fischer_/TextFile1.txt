@@ -10,4 +10,5 @@ Projektplanering:
 Dag2:
 påbörja kodning där rutor för alla levlar är fixade och påbörjat med blinkningen men ej med själva imiteringen (inmatning av användare)
 SRO håller koll på vilken runda och gör så att rutor endast blinkar en gång runda 1 osv. 
-
+Dag3:
+Har fixat så timings och att den kan blinka en speciall mängd gånger och loggar värdet 1-4 för vilka rutor som har blinkat i en lista

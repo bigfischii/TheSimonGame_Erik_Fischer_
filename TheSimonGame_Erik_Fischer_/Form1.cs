@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace TheSimonGame_Erik_Fischer_
 {
@@ -15,12 +16,13 @@ namespace TheSimonGame_Erik_Fischer_
         //Author: Erik Fischer
         int level = 1;
         int HS = 0; //Highscore taht session
-        int SRO = 0; //Number of blinks per round
+        int SRO = 3; //Number of blinks per round
         int AR = 0; //random value (per level)
         int SR = 0; //Score that game
         int background = 1;
         List<int> musx = new List<int>();
         List<int> musy = new List<int>();
+        List<int> squarenu = new List<int>();
         bool active = false;
         
         Random rnd_simonsq = new Random();
@@ -58,7 +60,7 @@ namespace TheSimonGame_Erik_Fischer_
                 //row 2 column 1;2
                 g.FillRectangle(p, 100, 0, 95, 95);
                 g.FillRectangle(p, 100, 100, 95, 95);
-                
+
             }
             if (background == 2)
             {
@@ -107,11 +109,14 @@ namespace TheSimonGame_Erik_Fischer_
             {
                 level++;
             }
-            
-            
 
 
-                for (int i = 0; i < SRO + 1; i++)
+            if (active == true)
+            {
+
+
+
+                for (int i = 0; i < SRO; i++)
                 {
 
                     if (level == 1)
@@ -121,26 +126,27 @@ namespace TheSimonGame_Erik_Fischer_
                         {
                             case 1:
                                 g.FillRectangle(pg, 0, 0, 95, 95);
-                                Task.Delay(1000);
-                                background = 1;
-
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 0, 0, 95, 95);
+                                squarenu.Add(AR);
                                 break;
                             case 2:
                                 g.FillRectangle(pg, 100, 0, 95, 95);
-                                Task.Delay(1000);
-                                background = 1;
-
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 100, 0, 95, 95);
+                                squarenu.Add(AR);
                                 break;
                             case 3:
                                 g.FillRectangle(pg, 0, 100, 95, 95);
-                                Task.Delay(1000);
-                                background = 1;
-
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 0, 100, 95, 95);
+                                squarenu.Add(AR);
                                 break;
                             case 4:
                                 g.FillRectangle(pg, 100, 100, 95, 95);
-                                Task.Delay(1000);
-                                background = 1;
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 100, 100, 95, 95);
+                                squarenu.Add(AR);
                                 break;
 
 
@@ -198,9 +204,11 @@ namespace TheSimonGame_Erik_Fischer_
                     */
 
                 }
-
-                //SRO++; lägg till efter klick kod är gjord
-            
+                active = false;
+                SRO++;
+                
+            }
+            //skriv input kod här
         }
 
 
