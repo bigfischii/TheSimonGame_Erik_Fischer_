@@ -16,7 +16,7 @@ namespace TheSimonGame_Erik_Fischer_
         //Author: Erik Fischer
         int level = 1;
         int HS = 0; //Highscore taht session
-        int SRO = 3; //Number of blinks per round
+        int SRO = 2; //Number of blinks per round
         int AR = 0; //random value (per level)
         int SR = 0; //Score that game
         int background = 1;
@@ -24,6 +24,8 @@ namespace TheSimonGame_Erik_Fischer_
         List<int> musy = new List<int>();
         List<int> squarenu = new List<int>();
         bool active = false;
+        int p = 0;
+        bool blink = false;
         
         Random rnd_simonsq = new Random();
 
@@ -128,24 +130,28 @@ namespace TheSimonGame_Erik_Fischer_
                                 g.FillRectangle(pg, 0, 0, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 0, 95, 95);
+                                System.Threading.Thread.Sleep(200);
                                 squarenu.Add(AR);
                                 break;
                             case 2:
                                 g.FillRectangle(pg, 100, 0, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 0, 95, 95);
+                                System.Threading.Thread.Sleep(200);
                                 squarenu.Add(AR);
                                 break;
                             case 3:
                                 g.FillRectangle(pg, 0, 100, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 100, 95, 95);
+                                System.Threading.Thread.Sleep(200);
                                 squarenu.Add(AR);
                                 break;
                             case 4:
                                 g.FillRectangle(pg, 100, 100, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 100, 95, 95);
+                                System.Threading.Thread.Sleep(200);
                                 squarenu.Add(AR);
                                 break;
 
@@ -154,45 +160,72 @@ namespace TheSimonGame_Erik_Fischer_
 
                     }
 
-                    /*else if (level == 2)
+                    else if (level == 2)
                     {
                         switch (AR)
                         {
                             case 1:
                                 g.FillRectangle(pg, 0, 0, 95, 95);
-                                panel1.Invalidate();
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 0, 0, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                squarenu.Add(AR);
                                 break;
                             case 2:
+                                g.FillRectangle(pg, 100, 0, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 0, 95, 95);
-                                panel1.Invalidate();
+                                System.Threading.Thread.Sleep(200);
+                                squarenu.Add(AR);
                                 break;
                             case 3:
+                                g.FillRectangle(pg, 200, 0, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 200, 0, 95, 95);
-                                panel1.Invalidate();
+                                System.Threading.Thread.Sleep(200);
+                                squarenu.Add(AR);
                                 break;
                             case 4:
+                                g.FillRectangle(pg, 0, 100, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 100, 95, 95);
-                                panel1.Invalidate();
+                                System.Threading.Thread.Sleep(200);
+                                squarenu.Add(AR);
                                 break;
                             case 5:
+                                g.FillRectangle(pg, 100, 100, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 100, 95, 95);
-                                panel1.Invalidate();
+                                System.Threading.Thread.Sleep(200);
+                                squarenu.Add(AR);
                                 break;
                             case 6:
+                                g.FillRectangle(pg, 200, 100, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 200, 100, 95, 95);
-                                panel1.Invalidate();
+                                System.Threading.Thread.Sleep(200);
+                                squarenu.Add(AR);
                                 break;
                             case 7:
+                                g.FillRectangle(pg, 0, 200, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 200, 95, 95);
-                                panel1.Invalidate();
+                                System.Threading.Thread.Sleep(200);
+                                squarenu.Add(AR);
                                 break;
                             case 8:
+                                g.FillRectangle(pg, 100, 200, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 200, 95, 95);
-                                panel1.Invalidate();
+                                System.Threading.Thread.Sleep(200);
+                                squarenu.Add(AR);
                                 break;
                             case 9:
+                                g.FillRectangle(pg, 200, 200, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 200, 200, 95, 95);
-                                panel1.Invalidate();
+                                System.Threading.Thread.Sleep(200);
+                                squarenu.Add(AR);
                                 break;
                         }
 
@@ -201,23 +234,23 @@ namespace TheSimonGame_Erik_Fischer_
                     {
 
                     }
-                    */
+
+                    
 
                 }
                 active = false;
                 SRO++;
-                
+                label2.Text = "klicka i rutorna";
             }
-            //skriv input kod här
+
+            
+            
         }
 
 
 
-        private void lvl2()
-        {
-
-        }
-
+        
+        
         
 
         private void button1_Click(object sender, EventArgs e)
@@ -225,6 +258,43 @@ namespace TheSimonGame_Erik_Fischer_
             Run.Enabled = true;
             active = true;
             panel1.Invalidate();
+            button1.Enabled = false;
+        }
+
+        private void ClickM(object sender, MouseEventArgs e)
+        {
+            musx[p] = e.X;
+            musy[p] = e.Y;
+            if (active == false)
+            {
+                
+                for (int i = 0; i <= squarenu.Count; i++)
+                {
+                    musy[i] = (musy[i] / 100) + 1;
+                    musx[i] = (musx[i] / 100) + 1;
+
+                    if (musx[i] == squarenu[i] && musy[i] == squarenu[i])
+                    {
+                        
+                        break;
+
+                    }
+                    else
+                    {
+                        failed();
+                    }
+                }
+                
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void failed()
+        {
+
         }
     }   
         
