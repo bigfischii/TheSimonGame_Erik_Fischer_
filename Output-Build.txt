@@ -1,0 +1,5 @@
+﻿Build started...
+1>------ Build started: Project: TheSimonGame_Erik_Fischer_, Configuration: Debug Any CPU ------
+1>C:\Users\0323fier\source\repos\ny\TheSimonGame_Erik_Fischer_\Form1.cs(28,14,28,19): warning CS0414: The field 'Form1.blink' is assigned but its value is never used
+1>  TheSimonGame_Erik_Fischer_ -> C:\Users\0323fier\source\repos\ny\TheSimonGame_Erik_Fischer_\bin\Debug\TheSimonGame_Erik_Fischer_.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

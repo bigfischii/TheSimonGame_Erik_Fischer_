@@ -16,15 +16,15 @@ namespace TheSimonGame_Erik_Fischer_
         //Author: Erik Fischer
         int level = 1;
         int HS = 0; //Highscore taht session
-        int SRO = 2; //Number of blinks per round
+        int SRO = 1; //Number of blinks per round
         int AR = 0; //random value (per level)
         int SR = 0; //Score that game
         int background = 1;
-        List<int> musx = new List<int>();
-        List<int> musy = new List<int>();
+        int musx;
+        int musy;
         List<int> squarenu = new List<int>();
         bool active = false;
-        int p = 0;
+        
         bool blink = false;
         
         Random rnd_simonsq = new Random();
@@ -263,17 +263,19 @@ namespace TheSimonGame_Erik_Fischer_
 
         private void ClickM(object sender, MouseEventArgs e)
         {
-            musx[p] = e.X;
-            musy[p] = e.Y;
+            
+            
             if (active == false)
             {
-                
-                for (int i = 0; i <= squarenu.Count; i++)
-                {
-                    musy[i] = (musy[i] / 100) + 1;
-                    musx[i] = (musx[i] / 100) + 1;
+                musx = e.X;
+                musy = e.Y;
 
-                    if (musx[i] == squarenu[i] && musy[i] == squarenu[i])
+                for (int i = 0; i < squarenu.Count; i++)
+                {
+                    musy = (musy / 100) + 1;
+                    musx = (musx / 100) + 1;
+
+                    if (musx == squarenu[i] && musy == squarenu[i])
                     {
                         
                         break;
@@ -283,6 +285,7 @@ namespace TheSimonGame_Erik_Fischer_
                     {
                         failed();
                     }
+                    
                 }
                 
             }
