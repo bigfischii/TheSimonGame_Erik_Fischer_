@@ -65,7 +65,6 @@ namespace TheSimonGame_Erik_Fischer_
             }
             if (background == 2) //9 sqares for level 2
             {
-                label2.Text = "More squares!";
                 //row 1 column 1;3
                 g.FillRectangle(p, 0, 0, 95, 95);
                 g.FillRectangle(p, 0, 100, 95, 95);
@@ -78,14 +77,10 @@ namespace TheSimonGame_Erik_Fischer_
                 g.FillRectangle(p, 200, 0, 95, 95);
                 g.FillRectangle(p, 200, 100, 95, 95);
                 g.FillRectangle(p, 200, 200, 95, 95);
-                System.Threading.Thread.Sleep(1200);
-                label2.Text = "Ready?";
-                System.Threading.Thread.Sleep(1200);
 
             }
             if (background == 3) // 16 squares for level 3
             {
-                label2.Text = "Good luck!";
                 //row 1 column 1;4
                 g.FillRectangle(p, 0, 0, 95, 95);
                 g.FillRectangle(p, 0, 100, 95, 95);
@@ -106,9 +101,6 @@ namespace TheSimonGame_Erik_Fischer_
                 g.FillRectangle(p, 300, 100, 95, 95);
                 g.FillRectangle(p, 300, 200, 95, 95);
                 g.FillRectangle(p, 300, 300, 95, 95);
-                System.Threading.Thread.Sleep(1200);
-                label2.Text = "Ready?";
-                System.Threading.Thread.Sleep(1200);
             }
             if (responseblink == 1)//reaction to input on squares
             {
@@ -439,7 +431,7 @@ namespace TheSimonGame_Erik_Fischer_
         {
             if (SRO > HS)
             {
-                SRO = HS;
+                HS = SRO;
                 label3.Text = HS.ToString();
             }
             level = 1;
