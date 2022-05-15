@@ -18,10 +18,10 @@ namespace TheSimonGame_Erik_Fischer_
         int HS = 0; //Highscore that session
         int SRO = 1; //Number of blinks per round
         int AR = 0; //random value (per round)
-        int SR = 0; //Score that game
         int background = 1; //initiates number of squares
         int stop = 0; //stops the blinking when player fails
-        int once = 0; //stops the expansion when active
+        int once = 0; //stops the expansion when active'
+        int responseblink = 0;
         int musx; //mouse x position
         int musy; // mouse y position
         int x = 0; //value for list, resets to 0 every round
@@ -33,8 +33,8 @@ namespace TheSimonGame_Erik_Fischer_
         public Form1()
         {
             InitializeComponent();
-            Run.Enabled = true;
-            label2.Text = HS.ToString();
+            label2.Text = " ";
+            label6.Text = " ";
             panel1.Invalidate();
         }
 
@@ -51,8 +51,9 @@ namespace TheSimonGame_Erik_Fischer_
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            SolidBrush p = new SolidBrush(Color.Black);
-            SolidBrush pg = new SolidBrush(Color.Purple);
+            SolidBrush p = new SolidBrush(Color.LightSeaGreen);
+            SolidBrush pg = new SolidBrush(Color.Crimson);
+            SolidBrush pr = new SolidBrush(Color.MediumAquamarine);
             if (background == 1) //4 squares for level 1
             {
                 //row 1 column 1;2
@@ -64,6 +65,7 @@ namespace TheSimonGame_Erik_Fischer_
             }
             if (background == 2) //9 sqares for level 2
             {
+                label2.Text = "More squares!";
                 //row 1 column 1;3
                 g.FillRectangle(p, 0, 0, 95, 95);
                 g.FillRectangle(p, 0, 100, 95, 95);
@@ -76,9 +78,14 @@ namespace TheSimonGame_Erik_Fischer_
                 g.FillRectangle(p, 200, 0, 95, 95);
                 g.FillRectangle(p, 200, 100, 95, 95);
                 g.FillRectangle(p, 200, 200, 95, 95);
+                System.Threading.Thread.Sleep(1200);
+                label2.Text = "Ready?";
+                System.Threading.Thread.Sleep(1200);
+
             }
             if (background == 3) // 16 squares for level 3
             {
+                label2.Text = "Good luck!";
                 //row 1 column 1;4
                 g.FillRectangle(p, 0, 0, 95, 95);
                 g.FillRectangle(p, 0, 100, 95, 95);
@@ -99,8 +106,17 @@ namespace TheSimonGame_Erik_Fischer_
                 g.FillRectangle(p, 300, 100, 95, 95);
                 g.FillRectangle(p, 300, 200, 95, 95);
                 g.FillRectangle(p, 300, 300, 95, 95);
+                System.Threading.Thread.Sleep(1200);
+                label2.Text = "Ready?";
+                System.Threading.Thread.Sleep(1200);
             }
-            
+            if (responseblink == 1)//reaction to input on squares
+            {
+                g.FillRectangle(pr, (musx / 100) * 100, (musy / 100) * 100, 95, 95);
+                responseblink = 0;
+                System.Threading.Thread.Sleep(200);
+                g.FillRectangle(p, (musx / 100) * 100, (musy / 100) * 100, 95, 95);
+            }
             if (active == true && stop == 0) // Randomly lights up one square, defined by SRO
             {
                 for (int i = 0; i < SRO; i++)
@@ -360,17 +376,18 @@ namespace TheSimonGame_Erik_Fischer_
                     }
                 }
                 active = false;
+                label6.Text = " ";
                 label2.Text = "klicka i rutorna";
-            }
+                label5.Text = SRO.ToString();
+            }// random blink code in collapsed
             if (corectornot == true)
             {
                 if (active == false && x == SRO)//if round is over or not
                 {
-                    label2.Text = "GG";
-                    SRO++;
                     System.Threading.Thread.Sleep(1000);
                     label2.Text = "Next round";
                     x = 0;
+                    SRO++;
                     panel1.Invalidate();
                     rutx.Clear();
                     ruty.Clear();
@@ -384,10 +401,10 @@ namespace TheSimonGame_Erik_Fischer_
                 background++;
                 once++;
             }
+            
         }
         private void button1_Click(object sender, EventArgs e) //startbutton
         {
-            Run.Enabled = true;
             active = true;
             button1.Enabled = false;
             panel1.Invalidate();
@@ -398,9 +415,11 @@ namespace TheSimonGame_Erik_Fischer_
             
             if (active == false)//if not blinking
             {
-                Console.Beep(500, 150);
                 musx = e.X;
                 musy = e.Y;
+                //blink click respons kod
+                responseblink = 1;
+                panel1.Invalidate();
                 if (musx < rutx[x] && musx > (rutx[x] - 95) && musy < ruty[x] && musy > ruty[x] - 95)
                 {
                     corectornot = true;
@@ -418,11 +437,15 @@ namespace TheSimonGame_Erik_Fischer_
 
         private void button2_Click(object sender, EventArgs e)// reset
         {
+            if (SRO > HS)
+            {
+                SRO = HS;
+                label3.Text = HS.ToString();
+            }
             level = 1;
             HS = 0; 
             SRO = 1; 
             AR = 0; 
-            SR = 0; 
             background = 1;
             stop = 0;
             once = 0;
