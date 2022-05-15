@@ -20,6 +20,8 @@ namespace TheSimonGame_Erik_Fischer_
         int AR = 0; //random value (per round)
         int SR = 0; //Score that game
         int background = 1;
+        int stop = 0;
+        int once = 0;
         int musx;
         int musy;
         int x = 0;
@@ -40,7 +42,7 @@ namespace TheSimonGame_Erik_Fischer_
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -61,7 +63,6 @@ namespace TheSimonGame_Erik_Fischer_
                 //row 2 column 1;2
                 g.FillRectangle(p, 100, 0, 95, 95);
                 g.FillRectangle(p, 100, 100, 95, 95);
-
             }
             if (background == 2)
             {
@@ -101,27 +102,14 @@ namespace TheSimonGame_Erik_Fischer_
                 g.FillRectangle(p, 300, 200, 95, 95);
                 g.FillRectangle(p, 300, 300, 95, 95);
             }
-
-            if (SR == 5) //score that game = 12 extend to 3*3
+            
+            if (active == true && stop == 0) // Randomly lights up one square, defined by SRO
             {
-                level++;
-            }
-            if (SR == 10) // score that game = 24 extend to 4*4
-            {
-                level++;
-            }
-
-
-            if (active == true)
-            {
-
                 for (int i = 0; i < SRO; i++)
                 {
-
                     if (level == 1)
                     {
                         AR = rnd_simonsq.Next(1, 4);
-
                         switch (AR)
                         {
                             case 1:
@@ -156,80 +144,222 @@ namespace TheSimonGame_Erik_Fischer_
                                 g.FillRectangle(p, 100, 100, 95, 95);
                                 System.Threading.Thread.Sleep(200);
                                 break;
-
-
                         }
-
                     }
-
                     else if (level == 2)
                     {
+                        AR = rnd_simonsq.Next(1, 9);
                         switch (AR)
                         {
                             case 1:
+                                rutx.Add(95);
+                                ruty.Add(95);
                                 g.FillRectangle(pg, 0, 0, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 0, 95, 95);
                                 System.Threading.Thread.Sleep(200);
                                 break;
                             case 2:
+                                rutx.Add(195);
+                                ruty.Add(95);
                                 g.FillRectangle(pg, 100, 0, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 0, 95, 95);
                                 System.Threading.Thread.Sleep(200);
                                 break;
                             case 3:
+                                rutx.Add(295);
+                                ruty.Add(95);
                                 g.FillRectangle(pg, 200, 0, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 200, 0, 95, 95);
                                 System.Threading.Thread.Sleep(200);
                                 break;
                             case 4:
+                                rutx.Add(95);
+                                ruty.Add(195);
                                 g.FillRectangle(pg, 0, 100, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 100, 95, 95);
                                 System.Threading.Thread.Sleep(200);
                                 break;
                             case 5:
+                                rutx.Add(195);
+                                ruty.Add(195);
                                 g.FillRectangle(pg, 100, 100, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 100, 95, 95);
                                 System.Threading.Thread.Sleep(200);
                                 break;
                             case 6:
+                                rutx.Add(295);
+                                ruty.Add(195);
                                 g.FillRectangle(pg, 200, 100, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 200, 100, 95, 95);
                                 System.Threading.Thread.Sleep(200);
                                 break;
                             case 7:
+                                rutx.Add(95);
+                                ruty.Add(295);
                                 g.FillRectangle(pg, 0, 200, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 200, 95, 95);
                                 System.Threading.Thread.Sleep(200);
                                 break;
                             case 8:
+                                rutx.Add(195);
+                                ruty.Add(295);
                                 g.FillRectangle(pg, 100, 200, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 200, 95, 95);
                                 System.Threading.Thread.Sleep(200);
                                 break;
                             case 9:
+                                rutx.Add(295);
+                                ruty.Add(295);
                                 g.FillRectangle(pg, 200, 200, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 200, 200, 95, 95);
                                 System.Threading.Thread.Sleep(200);
                                 break;
                         }
-
                     }
                     else
                     {
-
+                        AR = rnd_simonsq.Next(1, 16);
+                        switch (AR)
+                        {
+                            case 1:
+                                rutx.Add(95);
+                                ruty.Add(95);
+                                g.FillRectangle(pg, 0, 0, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 0, 0, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 2:
+                                rutx.Add(195);
+                                ruty.Add(95);
+                                g.FillRectangle(pg, 100, 0, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 100, 0, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 3:
+                                rutx.Add(295);
+                                ruty.Add(95);
+                                g.FillRectangle(pg, 200, 0, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 200, 0, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 4:
+                                rutx.Add(395);
+                                ruty.Add(95);
+                                g.FillRectangle(pg, 300, 0, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 300, 0, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 5:
+                                rutx.Add(95);
+                                ruty.Add(195);
+                                g.FillRectangle(pg, 0, 100, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 0, 100, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 6:
+                                rutx.Add(195);
+                                ruty.Add(195);
+                                g.FillRectangle(pg, 100, 100, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 100, 100, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 7:
+                                rutx.Add(295);
+                                ruty.Add(195);
+                                g.FillRectangle(pg, 200, 100, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 200, 100, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 8:
+                                rutx.Add(395);
+                                ruty.Add(195);
+                                g.FillRectangle(pg, 300, 100, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 300, 100, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 9:
+                                rutx.Add(95);
+                                ruty.Add(295);
+                                g.FillRectangle(pg, 0, 200, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 0, 200, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 10:
+                                rutx.Add(195);
+                                ruty.Add(295);
+                                g.FillRectangle(pg, 100, 200, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 100, 200, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 11:
+                                rutx.Add(295);
+                                ruty.Add(295);
+                                g.FillRectangle(pg, 200, 200, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 200, 200, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 12:
+                                rutx.Add(395);
+                                ruty.Add(295);
+                                g.FillRectangle(pg, 300, 200, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 300, 200, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 13:
+                                rutx.Add(95);
+                                ruty.Add(395);
+                                g.FillRectangle(pg, 0, 300, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 0, 300, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 14:
+                                rutx.Add(195);
+                                ruty.Add(395);
+                                g.FillRectangle(pg, 100, 300, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 100, 300, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 15:
+                                rutx.Add(295);
+                                ruty.Add(395);
+                                g.FillRectangle(pg, 200, 300, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 200, 300, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                            case 16:
+                                rutx.Add(395);
+                                ruty.Add(395);
+                                g.FillRectangle(pg, 300, 300, 95, 95);
+                                System.Threading.Thread.Sleep(1000);
+                                g.FillRectangle(p, 300, 300, 95, 95);
+                                System.Threading.Thread.Sleep(200);
+                                break;
+                        }
                     }
-                    
-                    
-
                 }
                 active = false;
                 label2.Text = "klicka i rutorna";
@@ -254,6 +384,12 @@ namespace TheSimonGame_Erik_Fischer_
                 }
                 corectornot = false;
             }
+            if (SRO == 5 && once == 0 || SRO == 10 && once == 1) //score that game = 5 or 10 extend to 3*3 or 4*4
+            {
+                level++;
+                background++;
+                once++;
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -265,7 +401,7 @@ namespace TheSimonGame_Erik_Fischer_
 
         private void ClickM(object sender, MouseEventArgs e)
         {
-             
+            
             if (active == false)
             {
                 Console.Beep(500, 150);
@@ -283,15 +419,34 @@ namespace TheSimonGame_Erik_Fischer_
                 }
             }
             
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            level = 1;
+            HS = 0; 
+            SRO = 1; 
+            AR = 0; 
+            SR = 0; 
+            background = 1;
+            stop = 0;
+            once = 0;
+            rutx.Clear();
+            ruty.Clear();
+            x = 0;
+            active = true;
+            corectornot = false;
+            panel1.Invalidate();
         }
         private void failed()
         {
+            Console.Beep(800, 100);
+            Console.Beep(300, 100);
+            stop++;
             label2.Text = "Press RESTART to restart";
+            active = true;
+
         }
 
         private void label1_Click(object sender, EventArgs e)

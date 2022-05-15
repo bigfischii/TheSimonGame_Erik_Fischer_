@@ -12,6 +12,7 @@ påbörja kodning där rutor för alla levlar är fixade och påbörjat med blinkningen
 SRO håller koll på vilken runda och gör så att rutor endast blinkar en gång runda 1 osv. 
 Dag3:
 Har fixat så timings och att den kan blinka en speciall mängd gånger och loggar värdet 1-4 för vilka rutor som har blinkat i en lista
-I CLICK så ska endast kod för justett klick ligga, det betyder att för att f¨godkänt för leveln så måste det ligga någon annan stans
-fortsättning: När man klickar på ruta så ska endast klick kåden kolla mux,musy samt om man har klickat i ruta, om sant så ska en bool ändras till true(rätt) false (fel) sen ska repetitionskåden ligga i graphic?
-i klickod sätt en variabel som om musx och musy = som förra runda så kommer det inte hända något, det gör så att koden kommer att vänta
+Dag4: 
+Listade ut hur man ska gör klickkoden, samt att jag har fixat alla levlar och spelet fungerar för evigt "nästan"
+Dag5:
+fixa grafik(ej genomförd), ska även lägga in så det blinkar istället för att låta när man klickar 
