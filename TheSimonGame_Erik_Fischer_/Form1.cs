@@ -15,20 +15,19 @@ namespace TheSimonGame_Erik_Fischer_
     {
         //Author: Erik Fischer
         int level = 1;
-        int HS = 0; //Highscore taht session
+        int HS = 0; //Highscore that session
         int SRO = 1; //Number of blinks per round
-        int AR = 0; //random value (per level)
+        int AR = 0; //random value (per round)
         int SR = 0; //Score that game
         int background = 1;
         int musx;
         int musy;
-        List<int> squarenu = new List<int>();
+        int x = 0;
+        List<int> rutx = new List<int>();
+        List<int> ruty = new List<int>();
         bool active = false;
-        
-        bool blink = false;
-        
+        bool corectornot = false;
         Random rnd_simonsq = new Random();
-
         public Form1()
         {
             
@@ -103,11 +102,11 @@ namespace TheSimonGame_Erik_Fischer_
                 g.FillRectangle(p, 300, 300, 95, 95);
             }
 
-            if (SR == 7) //score that game = 12 extend to 3*3
+            if (SR == 5) //score that game = 12 extend to 3*3
             {
                 level++;
             }
-            if (SR == 14) // score that game = 24 extend to 4*4
+            if (SR == 10) // score that game = 24 extend to 4*4
             {
                 level++;
             }
@@ -116,43 +115,46 @@ namespace TheSimonGame_Erik_Fischer_
             if (active == true)
             {
 
-
-
                 for (int i = 0; i < SRO; i++)
                 {
 
                     if (level == 1)
                     {
                         AR = rnd_simonsq.Next(1, 4);
+
                         switch (AR)
                         {
                             case 1:
+                                rutx.Add(95);
+                                ruty.Add(95);
                                 g.FillRectangle(pg, 0, 0, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 0, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 2:
+                                rutx.Add(195);
+                                ruty.Add(95);
                                 g.FillRectangle(pg, 100, 0, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 0, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 3:
+                                rutx.Add(95);
+                                ruty.Add(195);
                                 g.FillRectangle(pg, 0, 100, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 100, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 4:
+                                rutx.Add(195);
+                                ruty.Add(195);
                                 g.FillRectangle(pg, 100, 100, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 100, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
 
 
@@ -169,63 +171,54 @@ namespace TheSimonGame_Erik_Fischer_
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 0, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 2:
                                 g.FillRectangle(pg, 100, 0, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 0, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 3:
                                 g.FillRectangle(pg, 200, 0, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 200, 0, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 4:
                                 g.FillRectangle(pg, 0, 100, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 100, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 5:
                                 g.FillRectangle(pg, 100, 100, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 100, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 6:
                                 g.FillRectangle(pg, 200, 100, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 200, 100, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 7:
                                 g.FillRectangle(pg, 0, 200, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 0, 200, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 8:
                                 g.FillRectangle(pg, 100, 200, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 100, 200, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                             case 9:
                                 g.FillRectangle(pg, 200, 200, 95, 95);
                                 System.Threading.Thread.Sleep(1000);
                                 g.FillRectangle(p, 200, 200, 95, 95);
                                 System.Threading.Thread.Sleep(200);
-                                squarenu.Add(AR);
                                 break;
                         }
 
@@ -234,61 +227,62 @@ namespace TheSimonGame_Erik_Fischer_
                     {
 
                     }
-
+                    
                     
 
                 }
                 active = false;
-                SRO++;
                 label2.Text = "klicka i rutorna";
             }
+            if (corectornot == true)
+            {
+                if (active == false && x == SRO)
+                {
+                    label2.Text = "GG";
+                    SRO++;
+                    System.Threading.Thread.Sleep(1000);
+                    label2.Text = "Next round";
+                    x = 0;
+                    panel1.Invalidate();
+                    rutx.Clear();
+                    ruty.Clear();
+                    active = true;
+                }
+                else
+                {
 
-            
-            
+                }
+                corectornot = false;
+            }
         }
-
-
-
-        
-        
-        
-
         private void button1_Click(object sender, EventArgs e)
         {
             Run.Enabled = true;
             active = true;
-            panel1.Invalidate();
             button1.Enabled = false;
+            panel1.Invalidate();
         }
 
         private void ClickM(object sender, MouseEventArgs e)
         {
-            
-            
+             
             if (active == false)
             {
+                Console.Beep(500, 150);
                 musx = e.X;
                 musy = e.Y;
-
-                for (int i = 0; i < squarenu.Count; i++)
+                if (musx < rutx[x] && musx > (rutx[x] - 95) && musy < ruty[x] && musy > ruty[x] - 95)
                 {
-                    musy = (musy / 100) + 1;
-                    musx = (musx / 100) + 1;
-
-                    if (musx == squarenu[i] && musy == squarenu[i])
-                    {
-                        
-                        break;
-
-                    }
-                    else
-                    {
-                        failed();
-                    }
-                    
+                    corectornot = true;
+                    x++;
+                    panel1.Invalidate();
                 }
-                
+                else
+                {
+                    failed();
+                }
             }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -296,6 +290,11 @@ namespace TheSimonGame_Erik_Fischer_
 
         }
         private void failed()
+        {
+            label2.Text = "Press RESTART to restart";
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
