@@ -17,3 +17,4 @@ Listade ut hur man ska gör klickkoden, samt att jag har fixat alla levlar och sp
 Dag5:
 fixa grafik(ej genomförd), ska även lägga in så det blinkar istället för att låta när man klickar 
 Dag5: grafik fixad samt att spelet fungerar som det ska och behöver genomgå tung testning för vidare utveckling.
+Dag6: fixade sista buggen där en ruta lös utan attden va aktiv av level

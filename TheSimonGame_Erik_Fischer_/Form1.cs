@@ -62,12 +62,12 @@ namespace TheSimonGame_Erik_Fischer_
         private void Form1_Load(object sender, EventArgs e)
         {
             
-        }
+        }//nothing
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             
-        }
+        }//nothing
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -412,14 +412,14 @@ namespace TheSimonGame_Erik_Fischer_
             if (SRO == 6 || SRO == 11)
             {
                 once = 0;
-            }
+            }//checks when to increase diffculty and level
             if (SRO == 5 && once == 0 || SRO == 10 && once == 0)
             {
                 background++;
                 level++;
                 once = 1;
                 panel1.Invalidate();
-            }
+            }//makes so that only level increases once
         }
         private void button1_Click(object sender, EventArgs e) //startbutton
         {
@@ -431,26 +431,83 @@ namespace TheSimonGame_Erik_Fischer_
         private void ClickM(object sender, MouseEventArgs e)//mouseclick, checs mose coordinate, sends signal to correctornot (row,396)
         {
             
-            if (active == false)//if not blinking
+            if (active == false)
             {
                 musx = e.X;
                 musy = e.Y;
-                //blink click respons kod
-                responseblink = 1;
-                panel1.Invalidate();
-                if (musx < rutx[x] && musx > (rutx[x] - 95) && musy < ruty[x] && musy > ruty[x] - 95)
+                switch (background)//to make sure player only can press on active play area
                 {
-                    corectornot = true;
-                    x++;
-                    panel1.Invalidate();
-                }
-                else
-                {
-                    failed();
-                }
-            }
-            
+                    case 1:
 
+                        if (musx < 195 && musy < 195)//level=1
+                        {
+                            //blink click respons kod
+                            responseblink = 1;
+                            panel1.Invalidate();
+                            if (musx < rutx[x] && musx > (rutx[x] - 95) && musy < ruty[x] && musy > ruty[x] - 95)
+                            {
+                                corectornot = true;
+                                x++;
+                                panel1.Invalidate();
+                            }
+                            else
+                            {
+                                failed();
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        break;
+                    case 2:
+                        if (musx < 295 && musy < 295)//level=2
+                        {
+                            //blink click respons kod
+                            responseblink = 1;
+                            panel1.Invalidate();
+                            if (musx < rutx[x] && musx > (rutx[x] - 95) && musy < ruty[x] && musy > ruty[x] - 95)
+                            {
+                                corectornot = true;
+                                x++;
+                                panel1.Invalidate();
+                            }
+                            else
+                            {
+                                failed();
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        break;
+                    case 3:
+                        if (musx < 395 && musy < 395)//level=3
+                        {
+                            //blink click respons kod
+                            responseblink = 1;
+                            panel1.Invalidate();
+                            if (musx < rutx[x] && musx > (rutx[x] - 95) && musy < ruty[x] && musy > ruty[x] - 95)
+                            {
+                                corectornot = true;
+                                x++;
+                                panel1.Invalidate();
+                            }
+                            else
+                            {
+                                failed();
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        break;
+                }
+
+
+            }//if not blinking, checks mouse position and if the clicked square is right
         }
 
         private void button2_Click(object sender, EventArgs e)// reset
@@ -483,12 +540,12 @@ namespace TheSimonGame_Erik_Fischer_
             label2.Text = "GAME OVER";
             active = true;
 
-        }
+        }//activated when player fails to remember or misclicks
 
         private void label1_Click(object sender, EventArgs e)
         {
 
-        }
+        }//nothing
     }   
         
 }
