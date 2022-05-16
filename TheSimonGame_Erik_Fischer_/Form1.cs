@@ -127,9 +127,10 @@ namespace TheSimonGame_Erik_Fischer_
             {
                 g.FillRectangle(pr, (musx / 100) * 100, (musy / 100) * 100, 95, 95);
                 responseblink = 0;
-                System.Threading.Thread.Sleep(200);
+                System.Threading.Thread.Sleep(220);
                 g.FillRectangle(p, (musx / 100) * 100, (musy / 100) * 100, 95, 95);
             }//reaction to input on squares(high up because of prioritizing)
+            
             if (active == true && stop == 0) 
             {
                 for (int i = 0; i < SRO; i++)
@@ -410,12 +411,14 @@ namespace TheSimonGame_Erik_Fischer_
             }//checks if next round should be initiated
             if (SRO == 6 || SRO == 11)
             {
-                once--;
+                once = 0;
             }
             if (SRO == 5 && once == 0 || SRO == 10 && once == 0)
             {
                 background++;
-                once++;
+                level++;
+                once = 1;
+                panel1.Invalidate();
             }
         }
         private void button1_Click(object sender, EventArgs e) //startbutton
