@@ -397,7 +397,7 @@ namespace TheSimonGame_Erik_Fischer_
             {
                 if (active == false && x == SRO)//if round is over or not
                 {
-                    System.Threading.Thread.Sleep(1000);
+                    System.Threading.Thread.Sleep(500);
                     label2.Text = "Next round";
                     x = 0;
                     SRO++;
@@ -408,6 +408,15 @@ namespace TheSimonGame_Erik_Fischer_
                 }
                 corectornot = false; //if round not over, continue
             }//checks if next round should be initiated
+            if (SRO == 6 || SRO == 11)
+            {
+                once--;
+            }
+            if (SRO == 5 && once == 0 || SRO == 10 && once == 0)
+            {
+                background++;
+                once++;
+            }
         }
         private void button1_Click(object sender, EventArgs e) //startbutton
         {
