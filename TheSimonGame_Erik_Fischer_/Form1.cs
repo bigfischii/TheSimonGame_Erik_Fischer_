@@ -75,38 +75,13 @@ namespace TheSimonGame_Erik_Fischer_
             SolidBrush p = new SolidBrush(Color.LightSeaGreen);
             SolidBrush pg = new SolidBrush(Color.Crimson);
             SolidBrush pr = new SolidBrush(Color.MediumAquamarine);
-            switch (background)
-            {
-                case 1:for (int i = 0; i <= 1; i++)
-                    {
-                        g.FillRectangle(p, i * 100, i * 100, 95, 95);
-                        g.FillRectangle(p, i * 100, 100, 95, 95);
-                        g.FillRectangle(p, 100, i * 100, 95, 95);
-                    }break;
-                case 2:for (int i = 0; i <= 2; i++)
-                    {
-                        g.FillRectangle(p, i * 100, i * 100, 95, 95);
-                        g.FillRectangle(p, i * 100, 100, 95, 95);
-                        g.FillRectangle(p, 100, i * 100, 95, 95);
-                        g.FillRectangle(p, i * 100, 200, 95, 95);
-                        g.FillRectangle(p, 200, i * 100, 95, 95);
-                    }break;
-                case 3:for (int i = 0; i <= 3; i++)
-                    {
-                        g.FillRectangle(p, i * 100, i * 100, 95, 95);
-                        g.FillRectangle(p, i * 100, 100, 95, 95);
-                        g.FillRectangle(p, 100, i * 100, 95, 95);
-                        g.FillRectangle(p, i * 100, 200, 95, 95);
-                        g.FillRectangle(p, 200, i * 100, 95, 95);
-                        g.FillRectangle(p, 300, i * 100, 95, 95);
-                        g.FillRectangle(p, i * 100, 300, 95, 95);
-                    }break;
-            }
+            Background(g, background, p);
             
             if (responseblink == 1)
             {
-                g.FillRectangle(p, (musx / 100) * 100, (musy / 100) * 100, 95, 95);
                 g.FillRectangle(pr, (musx / 100) * 100, (musy / 100) * 100, 95, 95);
+                System.Threading.Thread.Sleep(50);
+                g.FillRectangle(p, (musx / 100) * 100, (musy / 100) * 100, 95, 95);
                 responseblink = 0;
             }//reaction to input on squares(high up because of prioritizing)
             
@@ -313,6 +288,43 @@ namespace TheSimonGame_Erik_Fischer_
         {
 
         }//nothing
+
+        public static void Background(Graphics g, int background, SolidBrush p)
+        {
+            switch (background)
+            {
+                case 1:
+                    for (int i = 0; i <= 1; i++)
+                    {
+                        g.FillRectangle(p, i * 100, i * 100, 95, 95);
+                        g.FillRectangle(p, i * 100, 100, 95, 95);
+                        g.FillRectangle(p, 100, i * 100, 95, 95);
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i <= 2; i++)
+                    {
+                        g.FillRectangle(p, i * 100, i * 100, 95, 95);
+                        g.FillRectangle(p, i * 100, 100, 95, 95);
+                        g.FillRectangle(p, 100, i * 100, 95, 95);
+                        g.FillRectangle(p, i * 100, 200, 95, 95);
+                        g.FillRectangle(p, 200, i * 100, 95, 95);
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i <= 3; i++)
+                    {
+                        g.FillRectangle(p, i * 100, i * 100, 95, 95);
+                        g.FillRectangle(p, i * 100, 100, 95, 95);
+                        g.FillRectangle(p, 100, i * 100, 95, 95);
+                        g.FillRectangle(p, i * 100, 200, 95, 95);
+                        g.FillRectangle(p, 200, i * 100, 95, 95);
+                        g.FillRectangle(p, 300, i * 100, 95, 95);
+                        g.FillRectangle(p, i * 100, 300, 95, 95);
+                    }
+                    break;
+            }
+        }
     }   
         
 }
